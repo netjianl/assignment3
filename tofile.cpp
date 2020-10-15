@@ -6,11 +6,13 @@
 #include <ctime>
 #include <climits>
 #include <float.h>
-
+#include <string>
 
 const int a = INT_MIN/2;
 const int b = INT_MAX/2;
 using namespace std;
+
+
 
 int main()
 {
@@ -24,9 +26,9 @@ int main()
     QueryPerformanceFrequency(&nFreq);
     QueryPerformanceCounter(&nBeginTime); 
 
-    fstream randomNum1("v1.txt",ios::in | ios::out|ios::trunc);
+    FILE * fp = fopen("v1.txt", "wb");
     //v1中生成随机数
-    if(randomNum1.is_open())
+    if(fp)
     {
         cout << "file v1 is open."<<endl;
     //读入随机数
@@ -37,11 +39,13 @@ int main()
         
         //float r = a + rand()%(b-a) + rand()/double(RAND_MAX);
         float r1 = rand()/double(RAND_MAX);
-        randomNum1 << r1 <<",";
+        //to_string(r1);
+        fprintf(fp, "%f",  r1);
 
         //cout << "a: " << a <<" b: "<<b <<endl;
         //cout  << r + rand()/double(RAND_MAX) << endl;
     }
+    fclose(fp);
 
         //randomNum1.clear();
         //randomNum1.seekg(0);
@@ -49,27 +53,30 @@ int main()
     }else{
         cout <<"something in v1 is wrong." <<endl;
     }
-    //v2中生成随机数
-    fstream randomNum2("v2.txt",ios::in | ios::out|ios::trunc);
-    if(randomNum2.is_open())
+
+    fp = fopen("v2.txt", "wb");
+    //v1中生成随机数
+    if(fp)
     {
         cout << "file v2 is open."<<endl;
     //读入随机数
-    //     srand((int)time(0)+1);  // 产生随机种子  把0换成NULL也行
+     //    srand((int)time(0));  // 产生随机种子  把0换成NULL也行
     //for (int i = 0; i < 200000000; i++) 
     for (int i = 0; i < 2000000; i++) 
     {
         
         //float r = a + rand()%(b-a) + rand()/double(RAND_MAX);
-        float r2 = rand()/double(RAND_MAX);
-        randomNum2 << r2 <<",";
+        float r1 = rand()/double(RAND_MAX);
+        //to_string(r1);
+        fprintf(fp, "%f",  r1);
 
         //cout << "a: " << a <<" b: "<<b <<endl;
-        //cout  << r + rand()/double(RAND_MAX) << endl; 
+        //cout  << r + rand()/double(RAND_MAX) << endl;
     }
+    fclose(fp);
 
-        //randomNum2.clear();
-        //randomNum2.seekg(0);
+        //randomNum1.clear();
+        //randomNum1.seekg(0);
 
     }else{
         cout <<"something in v2 is wrong." <<endl;
