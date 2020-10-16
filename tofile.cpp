@@ -40,7 +40,7 @@ int main()
         //float r = a + rand()%(b-a) + rand()/double(RAND_MAX);
         float r1 = rand()/double(RAND_MAX);
         //to_string(r1);
-        fprintf(fp, "%f",  r1);
+        fprintf(fp, "%f,",  r1);
 
         //cout << "a: " << a <<" b: "<<b <<endl;
         //cout  << r + rand()/double(RAND_MAX) << endl;
@@ -68,7 +68,7 @@ int main()
         //float r = a + rand()%(b-a) + rand()/double(RAND_MAX);
         float r1 = rand()/double(RAND_MAX);
         //to_string(r1);
-        fprintf(fp, "%f",  r1);
+        fprintf(fp, "%f,",  r1);
 
         //cout << "a: " << a <<" b: "<<b <<endl;
         //cout  << r + rand()/double(RAND_MAX) << endl;
